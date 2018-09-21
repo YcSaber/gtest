@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+        var promise = new Promise(function(resolve, reject){
+            var flag = Math.random();
+            setTimeout(function(){
+                if (flag) {
+                    resolve('success');
+                }
+                else {
+                    reject('fail');
+                }
+            },1000);
+        });
+
+        console.log(promise)
+    
+        promise.then(function(result) {
+            console.log(result);
+                }, 
+            function(err) {
+             console.log(err);
+        });
+
+
+        let p = new Promise( (resolve, reject) => {
+            setTimeout( () => {
+                Math.random > 0.5 ? resolve('success') : reject('fail')
+            },1000)
+        })
+            console.log(p)
+
+            p.then((result) => {
+                console.log(result);
+            }, (err) => {
+                console.log(err);
+            });
+
+            var p1 = new Promise(function(resolve,reject){
+                resolve(1);
+            });
+            var p2 = new Promise(function(resolve,reject){
+                setTimeout(function(){
+                    resolve(2);  
+                }, 500);      
+            });
+            var p3 = new Promise(function(resolve,reject){
+                setTimeout(function(){
+                    reject(3);  
+                }, 500);      
+            });
+
+            console.log(p1);
+            console.log(p2);
+            console.log(p3);
+
+            setTimeout(function(){
+                console.log(p2);
+            }, 1000);
+            setTimeout(function(){
+                console.log(p3);
+            }, 1000);
+
+            p1.then(function(value){
+                console.log(value);
+            });
+            p2.then(function(value){
+                console.log(value);
+            });
+            p3.catch(function(err){
+                console.log(err);
+            });
+
+    
+    </script>
+</body>
+</html>
